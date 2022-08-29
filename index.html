@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Adversarial Body Sim</title>
+<link href="./files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./files/jquery.js"></script>
+</head>
+
+<body>
+<div class="content">
+  <h1><strong>Human Body Measurement Estimation with Adversarial Augmentation</strong></h1>
+  <p id="authors"><span><a href="https://natanielruiz.github.io/"></a></span><a href="https://natanielruiz.github.io/">Nataniel Ruiz</a	> <a href="https://scholar.google.es/citations?user=tcTadjYAAAAJ&hl=en">Miriam Bellver</a> <a href="https://ps.is.mpg.de/~tbolkart">Timo Bolkart</a> <a href="https://www.ambujarora.com">Ambuj Arora</a> <a href="https://www.cs.umd.edu/~lin/">Ming C. Lin</a> <a href="https://scholar.google.com/citations?user=Wx62iOsAAAAJ&hl=en">Javier Romero</a> <a href="https://scholar.google.com/citations?user=hY3uN8oAAAAJ&hl=en">Raja Bala</a><br>
+    <br>
+  <span style="font-size: 24px">Amazon
+  </span></p>
+  <br>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>We present a Body Measurement network (BMnet) for estimating 3D anthropomorphic measurements of the human body shape from silhouette images. Training of BMnet is performed on data from real human subjects, and augmented with a novel adversarial body simulator (ABS) that finds and synthesizes challenging body shapes. ABS is based on the skinned multiperson linear (SMPL) body model, and aims to maximize BMnet measurement prediction error with respect to latent SMPL shape parameters. ABS is fully differentiable with respect to these parameters, and trained end-to-end via backpropagation with BMnet in the loop. Experiments show that ABS effectively discovers adversarial examples, such as bodies with extreme body mass indices (BMI), consistent with the rarity of extreme-BMI bodies in BMnet's training set. Thus ABS is able to reveal gaps in training data and potential failures in predicting under-represented body shapes. Results show that training BMnet with ABS improves measurement prediction accuracy on real bodies by up to 10%, when compared to no augmentation or random body shape sampling. Furthermore, our method significantly outperforms SOTA measurement estimation methods by as much as 3x. Finally, we release BodyM, the first challenging, large-scale dataset of photo silhouettes and body measurements of real human subjects, to further promote research in this area.</p>
+</div>
+<div class="content">
+  <h2>Method</h2>
+  <p>TODO </p>
+  <br>
+  <img class="summary-img" src="./files/fig_renderer_v2.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./files/fig_shape_optimization_v2.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./files/fig_bodym_v2.png" style="width:100%;"> <br>
+</div>
+</body>
+</html>
