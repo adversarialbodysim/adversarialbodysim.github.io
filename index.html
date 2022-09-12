@@ -15,23 +15,55 @@
   <span style="font-size: 24px">Amazon
   </span></p>
   <br>
+  <p align=center>
+    <a href="./files/148.pdf">Poster</a>
+    <a href="">Dataset (soon)</a>
+  </p>
 </div>
+
 <div class="content">
   <h2 style="text-align:center;">Abstract</h2>
   <p>We present a Body Measurement network (BMnet) for estimating 3D anthropomorphic measurements of the human body shape from silhouette images. Training of BMnet is performed on data from real human subjects, and augmented with a novel adversarial body simulator (ABS) that finds and synthesizes challenging body shapes. ABS is based on the skinned multiperson linear (SMPL) body model, and aims to maximize BMnet measurement prediction error with respect to latent SMPL shape parameters. ABS is fully differentiable with respect to these parameters, and trained end-to-end via backpropagation with BMnet in the loop. Experiments show that ABS effectively discovers adversarial examples, such as bodies with extreme body mass indices (BMI), consistent with the rarity of extreme-BMI bodies in BMnet's training set. Thus ABS is able to reveal gaps in training data and potential failures in predicting under-represented body shapes. Results show that training BMnet with ABS improves measurement prediction accuracy on real bodies by up to 10%, when compared to no augmentation or random body shape sampling. Furthermore, our method significantly outperforms SOTA measurement estimation methods by as much as 3x. Finally, we release BodyM, the first challenging, large-scale dataset of photo silhouettes and body measurements of real human subjects, to further promote research in this area.</p>
 </div>
-<div class="content">
-  <h2>Method</h2>
-  <p></p>
-  <br>
-  <img class="summary-img" src="./files/fig_renderer_v2.png" style="width:100%;"> <br>
-  <img class="summary-img" src="./files/fig_shape_optimization_v2.png" style="width:100%;"> <br>
-</div>
+
 <div class="content">
   <h2>Dataset</h2>
-  <p>The BodyM dataset will be released on this website during 3DV 2022.</p>
+  <p>We present the first large public body measurement dataset including more than 8,000 frontal and lateral silhouettes from more than 2,500 real subjects, paired with height, weight and 14 body measurements.
+    The figure above shows samples of silhouettes for a pair of subjects, including measurement bar charts with all 14 measurements and their respective height and weight. The BodyM dataset will be released here during the 3DV 2022 conference.</p>
   <br>
-  <img class="summary-img" src="./files/fig_bodym_v2.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./files/dataset.png" style="width:100%;"> <br>
 </div>
+
+<div class="content">
+  <h2>Method</h2>
+  <p>Our differentiable simulator is comprised of the SMPL model M that takes in shape β and pose θ. We generate height ϵ and weight ω using a trained regressor h, generate measurements using a deterministic measuring function g operating on vertices, and we render the silhouettes using a renderer R.
+  In order to simulate adversarial bodies, we optimize the shape β by maximizing a loss between the ground-truth measurements and the measurements estimated by our model f. The resulting shape parameters give rise to an adversarial body, which are then used to train the model f.</p>
+  <br>
+  <img class="summary-img" src="./files/model.png" style="width:100%;"> <br>
+</div>
+
+<div class="content">
+  <h2>Diagnosing Model Weaknesses</h2>
+  <p>We show that adversarially simulated bodies are concentrated in certain regions of body shape space. Here we can see that adversarial bodies are concentrated in negative regions of the 1st and 2nd shape component and have higher loss than random bodies. We also observe that the negative directions of these components correspond to taller and wider bodies.</p>
+  <br>
+  <img class="summary-img" src="./files/testing.png" style="width:100%;"> <br>
+</div>
+
+<div class="content">
+  <h2>Results</h2>
+  <br>
+  <p><b>SotA compared to off-the-shelf body reconstruction methods</b> <br>
+  We compare our method to SotA off-the-shelf body shape estimation methods such as SPIN, STRAPS and Sengupta et al. (ICCV 2021) and we find that our method outperforms them on body measurement estimation. Our method uses only one silhouette and no height and weight data for fairness.</p>
+  <img class="summary-img" src="./files/table1.png" style="width:100%;"> <br>
+  <p><b>SotA compared to other body measurement estimation methods</b> <br>
+  We compare against the SotA methods for body measurement estimation and find that we outperform them overall, and over a variety of specific measurements on two different datasets.</p>
+  <img class="summary-img" src="./files/table2.png" style="width:100%;"> <br>
+  <p><b>Simulated adversarial training improves body measurement estimation</b> <br>
+  We perform an ablation study over several setups (respectively: single-view, multi-view, and multi-view w/ 10x less real training data). We find that simulated adversarial body augmentation outperforms no augmentation and augmentation using randomly sampled simulated bodies.</p>
+  <img class="summary-img" src="./files/table3.png" style="width:100%;"> <br>
+</div>
+
+
+
 </body>
 </html>
